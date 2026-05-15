@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 import {
   DndContext,
   DragEndEvent,
@@ -106,7 +107,9 @@ function AddTaskModal({ onClose, onSave }: { onClose: () => void; onSave: () => 
           <div>
             <label className="text-sm font-medium">标题 *</label>
             <input
-              className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              className="mt-1 w-full px-3 py-2 border rounded-md text-sm modal-input"
+              spellCheck={false}
+              autoComplete="off"
               placeholder="任务标题"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -118,6 +121,8 @@ function AddTaskModal({ onClose, onSave }: { onClose: () => void; onSave: () => 
             <label className="text-sm font-medium">描述</label>
             <textarea
               className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              spellCheck={false}
+              autoComplete="off"
               placeholder="可选描述"
               rows={3}
               value={form.description}
@@ -181,6 +186,9 @@ export default function TasksPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
+      <Link href="/" className="inline-flex items-center justify-center w-8 h-8 rounded-md border hover:bg-accent transition-colors mb-4">
+        <ChevronLeft className="h-4 w-4" />
+      </Link>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">任务面板</h1>

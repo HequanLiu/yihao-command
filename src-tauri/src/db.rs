@@ -266,7 +266,7 @@ impl Database {
 
     pub fn export_csv(&self, table: &str) -> Result<String, String> {
         if table == "customers" {
-            let customers = self.get_customers()?;
+            let customers = self.get_customers().map_err(|e| e.to_string())?;
             let mut lines = vec!["id,name,email,phone,company,notes,created_at,updated_at".to_string()];
             for c in customers {
                 lines.push(format!("{},{},{},{},{},{},{},{}",
@@ -276,7 +276,7 @@ impl Database {
             }
             Ok(lines.join("\n"))
         } else {
-            let tasks = self.get_tasks()?;
+            let tasks = self.get_tasks().map_err(|e| e.to_string())?;
             let mut lines = vec!["id,title,description,status,position,created_at,updated_at".to_string()];
             for t in tasks {
                 lines.push(format!("{},{},{},{},{},{},{}",

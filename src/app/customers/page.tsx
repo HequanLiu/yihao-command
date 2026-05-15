@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Plus, Search, Trash2, Edit2, X } from 'lucide-react'
+import { Plus, Search, Trash2, Edit2, X, ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 import { useCustomerStore } from '@/stores/customer-store'
 import { getCustomers, createCustomer, updateCustomer, deleteCustomer, type Customer } from '@/lib/db'
 import { cn } from '@/lib/utils'
@@ -44,8 +45,11 @@ function CustomerModal({ customer, onClose, onSave }: {
           <div>
             <label className="text-sm font-medium">姓名 *</label>
             <input
-              className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              className="mt-1 w-full px-3 py-2 border rounded-md text-sm modal-input"
+              spellCheck={false}
+              autoComplete="off"
               placeholder="客户姓名"
+              autoFocus
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
@@ -56,6 +60,8 @@ function CustomerModal({ customer, onClose, onSave }: {
               <label className="text-sm font-medium">邮箱</label>
               <input
                 className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              spellCheck={false}
+              autoComplete="off"
                 placeholder="email@example.com"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -65,6 +71,8 @@ function CustomerModal({ customer, onClose, onSave }: {
               <label className="text-sm font-medium">电话</label>
               <input
                 className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              spellCheck={false}
+              autoComplete="off"
                 placeholder="138xxxx"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -75,6 +83,8 @@ function CustomerModal({ customer, onClose, onSave }: {
             <label className="text-sm font-medium">公司</label>
             <input
               className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              spellCheck={false}
+              autoComplete="off"
               placeholder="公司名称"
               value={form.company}
               onChange={(e) => setForm({ ...form, company: e.target.value })}
@@ -84,6 +94,8 @@ function CustomerModal({ customer, onClose, onSave }: {
             <label className="text-sm font-medium">备注</label>
             <textarea
               className="mt-1 w-full px-3 py-2 border rounded-md text-sm"
+              spellCheck={false}
+              autoComplete="off"
               placeholder="跟进记录、需求..."
               rows={3}
               value={form.notes}
@@ -135,6 +147,9 @@ export default function CustomersPage() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
+      <Link href="/" className="inline-flex items-center justify-center w-8 h-8 rounded-md border hover:bg-accent transition-colors mb-4">
+        <ChevronLeft className="h-4 w-4" />
+      </Link>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">客户雷达</h1>

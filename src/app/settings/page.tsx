@@ -1,5 +1,8 @@
 'use client'
 
+import Link from 'next/link'
+import { ChevronLeft } from 'lucide-react'
+
 import { useState } from 'react'
 import { Download, Github, Database } from 'lucide-react'
 import { exportJson, exportCsv } from '@/lib/db'
@@ -22,6 +25,9 @@ export default function SettingsPage() {
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
+      <Link href="/" className="inline-flex items-center justify-center w-8 h-8 rounded-md border hover:bg-accent transition-colors mb-4">
+        <ChevronLeft className="h-4 w-4" />
+      </Link>
       <h1 className="text-2xl font-bold mb-6">设置</h1>
 
       <section className="mb-8">

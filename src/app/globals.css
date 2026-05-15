@@ -47,3 +47,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Fix Chinese IME input in Tauri - disable GPU compositing for inputs */
+input, textarea {
+  ime-mode: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  will-change: auto;
+}
+
+.modal-input {
+  ime-mode: active !important;
+}

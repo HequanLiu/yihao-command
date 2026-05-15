@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(node *)",
+      "Bash(git checkout *)",
+      "Bash(npm run *)",
+      "Bash(npm ls *)"
+    ]
+  }
+}
